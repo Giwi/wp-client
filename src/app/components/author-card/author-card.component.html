@@ -1,0 +1,14 @@
+<div class="card mb-3" *ngIf="author">
+  <div class="row no-gutters">
+    <div class="col-auto">
+      <img src="" [lazyLoad]="author.avatar_urls['96']" [alt]="author.name" class="border-right">
+    </div>
+    <div class="col">
+      <div class="card-body">
+        <h5 class="card-title">{{author.name}}</h5>
+        <p class="card-text" [innerHTML]="author.description"></p>
+        <p class="card-text" *ngIf="author.url"><a [href]="author.url" target="_blank">{{author.url}}</a></p>
+      </div>
+    </div>
+  </div>
+</div>

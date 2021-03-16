@@ -1,0 +1,18 @@
+<div class="container-fluid" *ngIf="!loading">
+  <div class="card mb-3" *ngFor="let p of posts">
+    <img [lazyLoad]="p._embedded['wp:featuredmedia'][0]?.source_url" src="/assets/loading5.gif" class="card-img-top"
+         [alt]="p.title.rendered">
+    <div class="card-body">
+      <h2 class="card-title" [innerHTML]="p.title.rendered"></h2>
+      <span [innerHTML]="p.excerpt.rendered"></span>
+      <a [routerLink]="[ '/', p.slug ]" class="btn btn-primary">Read more</a>
+    </div>
+    <div class="card-footer text-muted">{{p.date | date : 'short' }} by <a href="#">{{p._embedded.author[0].name}}</a>
+    </div>
+  </div><!-- /.blog-post -->
+  <div class="container-fluid d-flex align-items-center justify-content-between mb-3">
+    <button class="btn btn-primary" (click)="previous()">Previous</button>
+    <button class="btn btn-primary" (click)="next()" *ngIf="start > 0">Next</button>
+  </div>
+</div>
+<app-loader *ngIf="loading"></app-loader>

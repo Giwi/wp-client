@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <ngb-carousel #carousel [interval]="5000">
+    <ng-template ngbSlide *ngFor="let p of posts; index as i">
+      <div class="card bg-dark text-white"
+           style="background-image: url({{p._embedded['wp:featuredmedia'][0]?.source_url}});"
+      >
+        <div class="overlay d-flex flex-column justify-content-end">
+          <div class="p-3">
+            <h5 class="card-title" [innerHTML]="p.title.rendered"></h5>
+            <p class="card-text" [innerHTML]="p.excerpt.rendered"></p>
+            <a [routerLink]="[ '/', p.slug ]" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
