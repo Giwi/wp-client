@@ -1,0 +1,8 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h4 class="card-title">Tags</h4>
+    <ol class="list-unstyled mb-0">
+      <li *ngFor="let t of tags"><a [routerLink]="[ '/', 'tag', t.slug]">{{t.name}}</a></li>
+    </ol>
+  </div>
+</div>

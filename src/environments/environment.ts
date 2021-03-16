@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint:
+  endpoint: 'http://giwi.free.fr/index.php'
 };
 
 /*
