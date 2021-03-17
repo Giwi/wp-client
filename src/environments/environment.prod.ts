@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpoint: 'http://giwi.free.fr/index.php'
+  endpoint: 'https://giwi.alwaysdata.net'
 };

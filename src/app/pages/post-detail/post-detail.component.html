@@ -3,16 +3,34 @@
   <div class="d-flex flex-row justify-content-between align-items-center">
     <p class="text-muted">{{post.date | date :  'short' }}</p>
     <ul class="list-inline">
-      <li class="list-inline-item" *ngFor="let c of categories"><a [routerLink]="[ '/', 'category', c.slug]">{{c.name}}</a></li>
+      <li class="list-inline-item" *ngFor="let c of categories"><a
+        [routerLink]="[ '/', 'category', c.slug]">{{c.name}}</a></li>
     </ul>
     <ul class="list-inline">
-      <li class="list-inline-item" *ngFor="let t of tags"><a [routerLink]="[ '/', 'tag', t.slug]">{{t.name}}</a></li>
+      <li class="list-inline-item" *ngFor="let t of tags"><a [routerLink]="[ '/', 'tag', t.slug]"
+                                                             class="badge badge-primary">{{t.name}}</a></li>
     </ul>
   </div>
   <div [innerHTML]="post.excerpt.rendered"></div>
-  <img src="/assets/loading5.gif" [lazyLoad]="post._embedded['wp:featuredmedia'][0]?.source_url" class="img-fluid mb-3" [alt]="post.title.rendered">
+  <img *ngIf="post._embedded['wp:featuredmedia']" src="/assets/loading5.gif"
+       [lazyLoad]="post._embedded['wp:featuredmedia'][0]?.source_url" class="img-fluid mb-3"
+       [alt]="post.title.rendered">
   <div [innerHTML]="content"></div>
   <div>
     <app-author-card *ngFor="let a of post._embedded.author" [author]="a"></app-author-card>
   </div>
+  <div class="container-fluid text-center">
+    <share-buttons [theme]="'outline'"
+                   [include]="['twitter','linkedin','email']"
+                   [show]="3"
+                   [description]="sanitize(post.excerpt.rendered)"
+                   [url]="postURL"
+                   [title]="sanitize(post.title.rendered)"
+                   [image]="post._embedded['wp:featuredmedia'][0]?.source_url"
+                   [tags]="'warp10'"
+                   [autoSetMeta]="true"
+    ></share-buttons>
+  </div>
 </div>
+
+<app-loader *ngIf="!post"></app-loader>

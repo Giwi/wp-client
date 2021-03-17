@@ -25,6 +25,8 @@ import { PagesComponent } from './components/pages/pages.component';
 import { PageComponent } from './pages/page/page.component';
 import {FormsModule} from '@angular/forms';
 import { SearchComponent } from './pages/search/search.component';
+import {ShareButtonsModule} from 'ngx-sharebuttons/buttons';
+import {ShareIconsModule} from 'ngx-sharebuttons/icons';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { SearchComponent } from './pages/search/search.component';
     ToastrModule.forRoot({
       preventDuplicates: true
     }),
+    ShareButtonsModule,
+    ShareIconsModule,
     NgbModule,
     FormsModule,
   ],

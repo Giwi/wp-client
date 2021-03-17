@@ -13,6 +13,7 @@ export class PostDetailComponent implements OnInit {
   categories: any[] = [];
   tags: any[] = [];
   content: string;
+  postURL: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +24,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       if (params.get('slug')) {
+        this.postURL = window.location.href;
         this.wpService.getPost(params.get('slug')).subscribe(r => {
           if (r.length > 0) {
             this.post = r[0];
@@ -30,11 +32,14 @@ export class PostDetailComponent implements OnInit {
             this.post._embedded['wp:term'].forEach(t => t.forEach(item => terms.push(item)));
             this.categories = terms.filter(t => t.taxonomy === 'category');
             this.tags = terms.filter(t => t.taxonomy === 'post_tag');
-            this.content = this.post.content.rendered.replace(new RegExp(environment.endpoint, 'gi'), '');
+            this.content = this.post.content.rendered.replace(new RegExp(environment.endpoint, 'gi'), '/');
           }
         });
       }
     });
   }
 
+  sanitize(rendered: string): string {
+    return rendered.replace(/<[^>]*>/g, '');
+  }
 }

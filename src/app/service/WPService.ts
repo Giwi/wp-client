@@ -94,7 +94,7 @@ export class WPService {
   }
 
   getCategories() {
-    return this.http.get<any[]>(`${environment.endpoint}/wp-json/wp/v2/categories`,
+    return this.http.get<any[]>(`${environment.endpoint}/wp-json/wp/v2/categories?per_page=50`,
       {headers: {Accept: 'application/json;UTF-8'}})
       .pipe(
         tap(r => this.logger.debug(`exec data ${r}`)),
@@ -103,7 +103,7 @@ export class WPService {
   }
 
   getTags() {
-    return this.http.get<any[]>(`${environment.endpoint}/wp-json/wp/v2/tags`,
+    return this.http.get<any[]>(`${environment.endpoint}/wp-json/wp/v2/tags?per_page=50`,
       {headers: {Accept: 'application/json;UTF-8'}})
       .pipe(
         tap(r => this.logger.debug(`exec data ${r}`)),

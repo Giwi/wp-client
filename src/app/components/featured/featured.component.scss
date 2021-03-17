@@ -1,18 +1,31 @@
 :host {
-  .wrapper .card {
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
 
-    .overlay {
-      background-color: #404040cc;
-      height: auto;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding-bottom: 30px;
+  .wrapper {
+    background-image: url("/assets/loading5.gif");
+    background-size: cover;
+
+    ::ng-deep .carousel-inner {
+      height: 500px;
     }
 
+    ::ng-deep .carousel-item {
+      height: 100%;
+    }
+
+    .card {
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+
+      .overlay {
+        background-color: #404040cc;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 30px;
+      }
+    }
   }
 }

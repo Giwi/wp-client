@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WPService} from './service/WPService';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router, RouterEvent} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +12,17 @@ export class AppComponent implements OnInit {
   title: string;
   description: string;
   searchTerms: string;
+  withSlider = true;
 
   constructor(private router: Router, private wpService: WPService) {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe((routerEvent: RouterEvent) => {
+      if (routerEvent instanceof NavigationEnd) {
+        this.withSlider = routerEvent.url === '/';
+      }
+    });
     this.wpService.getPages(0, 10).subscribe(r => this.pages = r);
     this.wpService.getBlogInfo().subscribe(r => {
       this.title = r.name;

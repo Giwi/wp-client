@@ -3,6 +3,7 @@ import {PageScrollService} from 'ngx-page-scroll-core';
 import {DOCUMENT} from '@angular/common';
 import {WPService} from '../../service/WPService';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Observable} from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-search',
@@ -16,6 +17,7 @@ export class SearchComponent implements OnInit {
   loading = true;
   searchTerms: string;
 
+
   constructor(
     private pageScrollService: PageScrollService,
     @Inject(DOCUMENT) private document: any,
@@ -26,7 +28,9 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.searchTerms = params.get('q');
-      this.getData();
+      if (!!this.searchTerms && this.searchTerms !== '') {
+        this.getData();
+      }
     });
   }
 
