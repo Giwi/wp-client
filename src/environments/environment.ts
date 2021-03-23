@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: 'https://giwi.alwaysdata.net'
+  endpoint: 'https://giwi.fr/'
 };
 
 /*
