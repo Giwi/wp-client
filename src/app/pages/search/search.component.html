@@ -2,11 +2,11 @@
   <h1>Search results for: {{searchTerms}}</h1>
   <div class="card mb-3" *ngFor="let p of posts">
     <img *ngIf="p._embedded['wp:featuredmedia']" [lazyLoad]="p._embedded['wp:featuredmedia'][0]?.source_url"
-         src="/assets/loading5.gif" class="card-img-top"
+         src="assets/loading5.gif" class="card-img-top"
          [alt]="p.title.rendered">
     <div class="card-body">
-      <h2 class="card-title" [innerHTML]="p.title.rendered"></h2>
-      <span [innerHTML]="p.excerpt.rendered"></span>
+      <h2 class="card-title" [innerHTML]="p.title.rendered | safeHtml"></h2>
+      <span [innerHTML]="p.excerpt.rendered | safeHtml"></span>
       <a [routerLink]="[ '/', p.slug ]" class="btn btn-primary">Read more</a>
     </div>
     <div class="card-footer text-muted">{{p.date | date : 'short' }} by {{p._embedded.author[0]?.name}}

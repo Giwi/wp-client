@@ -1,7 +1,6 @@
 :host {
 
   .wrapper {
-    background-image: url("/assets/loading5.gif");
     background-size: cover;
 
     ::ng-deep .carousel-inner {
@@ -25,6 +24,7 @@
         bottom: 0;
         width: 100%;
         padding-bottom: 30px;
+        z-index: 999;
       }
     }
   }

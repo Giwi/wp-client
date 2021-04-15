@@ -27,6 +27,7 @@ import {FormsModule} from '@angular/forms';
 import { SearchComponent } from './pages/search/search.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons/buttons';
 import {ShareIconsModule} from 'ngx-sharebuttons/icons';
+import {SafeHtmlPipe} from './components/safeHtml.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {ShareIconsModule} from 'ngx-sharebuttons/icons';
     PageDetailComponent,
     PagesComponent,
     PageComponent,
-    SearchComponent
+    SearchComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

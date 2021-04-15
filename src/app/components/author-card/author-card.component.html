@@ -6,7 +6,7 @@
     <div class="col">
       <div class="card-body">
         <h5 class="card-title">{{author.name}}</h5>
-        <p class="card-text" [innerHTML]="author.description"></p>
+        <p class="card-text" [innerHTML]="author.description | safeHtml"></p>
         <p class="card-text" *ngIf="author.url"><a [href]="author.url" target="_blank">{{author.url}}</a></p>
       </div>
     </div>
