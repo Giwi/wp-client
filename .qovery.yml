@@ -1,0 +1,11 @@
+---
+application:
+  name: "wp-client"
+  project: "blog"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-wp-client"
+  routes:
+  - application_name: "wp-client"
+    paths:
+    - "/*"
